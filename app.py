@@ -8,7 +8,7 @@ from tensorflow.keras import layers, models
 
 st.set_page_config(page_title="Driver Drowsiness Detection")
 
-st.title("🚗 Driver Drowsiness Detection")
+st.title("Driver Drowsiness Detection")
 
 @st.cache_resource
 def load_my_model():
