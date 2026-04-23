@@ -57,8 +57,8 @@ while True:
         pred_buffer.append(pred)
         avg_pred = np.mean(pred_buffer)
 
-        label = "Drowsy" if avg_pred > 0.5 else "Alert"
-        color = (0, 0, 255) if avg_pred > 0.5 else (0, 255, 0)
+        label = "Drowsy" if avg_pred > 0.35 else "Alert"
+        color = (0, 0, 255) if avg_pred > 0.35 else (0, 255, 0)
 
         cv2.rectangle(frame, (x, y), (x+w, y+h), color, 2)
         cv2.putText(frame, f"{label} ({avg_pred:.2f})",
