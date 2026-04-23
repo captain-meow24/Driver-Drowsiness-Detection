@@ -6,7 +6,6 @@ from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras import layers, models
 
-# ── Rebuild the exact same architecture as Colab ─────────────────────
 base_model = MobileNetV2(
     input_shape=(224, 224, 3),
     include_top=False,
@@ -22,15 +21,12 @@ model = models.Sequential([
     layers.Dense(1, activation='sigmoid')
 ])
 
-# Build the model with a dummy input first
 model(tf.zeros([1, 224, 224, 3]))
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-# ── Load your trained weights ─────────────────────────────────────────
 model.load_weights("drowsiness_weights.weights.h5")
 print("✅ Model loaded successfully")
 
-# ── Face detector ─────────────────────────────────────────────────────
 face_cascade = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 )
@@ -38,7 +34,7 @@ face_cascade = cv2.CascadeClassifier(
 pred_buffer = deque(maxlen=10)
 cap = cv2.VideoCapture(0)
 
-print("📷 Camera started — press ESC to quit")
+print("Camera started — press ESC to quit")
 
 while True:
     ret, frame = cap.read()
