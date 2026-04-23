@@ -8,7 +8,7 @@ from tensorflow.keras import layers, models
 
 st.set_page_config(page_title="Driver Drowsiness Detection")
 
-st.title("Driver Drowsiness Detection")
+st.title("🚗 Driver Drowsiness Detection")
 
 @st.cache_resource
 def load_my_model():
@@ -65,7 +65,7 @@ while run:
 
         pred = model.predict(img, verbose=0)[0][0]
 
-        if pred > 0.5:
+        if pred > 0.35:
             label = "Drowsy"
             color = (0,0,255)
         else:
@@ -80,3 +80,4 @@ while run:
     frame_window.image(frame)
 
 cap.release()
+cv2.destroyAllWindows()
